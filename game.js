@@ -22,11 +22,24 @@ function getPLayerChoice() {
             }
         else {
             // This won't show because prompt() will show up before console
-            alert("PLease try again, enter Rock, Paper, or Scissors.")
-            console.log("PLease try again, enter Rock, Paper, or Scissors.")
+            alert("PLease try again, enter Rock, Paper, or Scissors.");
+            console.log("PLease try again, enter Rock, Paper, or Scissors.");
         }
-    
     }
-
-
 }
+
+// Random choice of rock, paper, scissors for computerSelection
+function getComputerChoice() {
+    rand = Math.floor(Math.random() * 3);
+    if (rand === 0) {
+        return "rock";
+    } elif (rand === 1) {
+        return "paper";
+    } else {
+        return "scissors";
+    }
+}
+
+
+
+
