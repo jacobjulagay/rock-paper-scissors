@@ -6,7 +6,7 @@ function startGame() {
         alert("See you next time!");
         return;
     }
-};
+}
 
 function getPlayerChoice() {
     let playerSelection = prompt("Rock, Paper, or Scissors?");
@@ -25,7 +25,7 @@ function getPlayerChoice() {
             console.log("PLease try again, enter Rock, Paper, or Scissors.");
         }
     }
-};
+}
 
 // Random choice of rock, paper, scissors for computerSelection
 function getComputerChoice() {
@@ -37,7 +37,7 @@ function getComputerChoice() {
     } else {
         return "scissors";
     }
-};
+}
 
 function singleRound(playerSelection, computerSelection) {
     //Draw
@@ -51,40 +51,37 @@ function singleRound(playerSelection, computerSelection) {
     if (playerSelection === "scissors" && computerSelection === "rock" ||
         playerSelection === "rock" && computerSelection === "paper" ||
         playerSelection === "paper" && computerSelection === "scissors") {
-        console.log(`You lose. ${playerSelection} loses to {computerSelection}`);
-        return 1;
+        console.log(`You lose. ${playerSelection} loses to ${computerSelection}`);
+        return "computer";
     }
     // Player Win
     if (playerSelection === "rock" && computerSelection === "scissors" ||
         playerSelection === "paper" && computerSelection === "rock" ||
         playerSelection === "scissors" && computerSelection === "paper") {
-        console.log(`You lose. ${playerSelection} loses to {computerSelection}`);
-        return 2;
+        console.log(`You win. ${playerSelection} loses to ${computerSelection}`);
+        return "player";
     }
 
 }
 
-// Best out of 5 games
 // TODO: Add if you win 3 games, then finish the program.
 function playGame() {
     
     let playerCount = 0;
     let computerCount = 0;
-    let totalCount = 0;
 
-    while(totalCount !== 5) {
+    while(playerCount < 3 && computerCount < 3 ) {
         const computerSelection = getComputerChoice();
         const playerSelection = getPlayerChoice();
-        let roundCount = singleRound(playerSelection, computerSelection);
-        if (roundCount === 1) {
+        let winner = singleRound(playerSelection, computerSelection);
+        if (winner === "computer") {
             computerCount += 1;
-            totalCount += 1;
-        } else if (roundCount === 2) {
+        } else if (winner === "player") {
             playerCount += 1;
-            totalCount += 1;
         } else {
             continue;
         }
+        console.log(`playerCount: ${playerCount}, computerCount: ${computerCount}`);
     }
 
     if (playerCount === 3) {
@@ -94,6 +91,6 @@ function playGame() {
     } else {
         alert(`Draw. Player: ${playerCount}, Computer: ${computerCount}`);
     }
-};
+}
 
 startGame();
